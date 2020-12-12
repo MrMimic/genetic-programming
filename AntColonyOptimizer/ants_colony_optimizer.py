@@ -115,20 +115,20 @@ class Country:
     How likely an ant will follow a path highly saturated with pheromones.
     """
 
-    beta = 0.6
+    beta: float = 0.6
     """
     How likely ants are going to be lazy and follow the shortest path.
     """
 
-    random_coefficient = 0.3
+    random_coefficient: float = 0.3
     """
     Probability to pick a random newt direction (ignoring distance and pheromones).
     """
-    def __init__(self, number_of_cities):
+    def __post_init__(self):
 
         # Cities are generated with random GPS coords.
         self.cities = []
-        for _ in range(number_of_cities):
+        for _ in range(self.number_of_cities):
             latitude = np.random.uniform(42, 50)
             longitude = np.random.uniform(-4, 7)
             self.cities.append(
@@ -484,7 +484,10 @@ def create_gif() -> None:
 if __name__ == "__main__":
 
     # Create a country with a given number of cities.
-    pays = Country(number_of_cities=8)
+    pays = Country(
+        number_of_cities=8,
+        alpha=0.4,
+        beta=0.6)
 
     # Populate it with ants
     pays.populate(number_of_ants=3)
