@@ -5,7 +5,13 @@
 
 See [Wikipedia](https://en.wikipedia.org/wiki/Ant_colony_optimization_algorithms) for details about the algorithm.
 
-Thge basic idea is to follow the behavior of an ant colony to find the shortest path linking all cities in a country (represented as a graph).
+Thge basic idea is to follow the behavior of an ant colony to find the shortest path linking all cities in a country (represented as a graph). Briefly:
+- A country with semi-real GPS coordinates is created
+- It is populated withs ants that must find a round to go through all cities
+- Ants move over iterrations
+- At the end, they drop pheromones (with different ability for each ant)
+- Pheromones evaporate a bit
+- Ants choosing a new path (shorter and full of pheromones)
 
 Quick to solve (not when creating the GIF output).
 
@@ -15,7 +21,7 @@ Quick to solve (not when creating the GIF output).
 
 `pip install -r requirements`
 
-`python3 AntColonyOptimizer/ants_colony_optimizer.py`
+`python3 AntColonyOptimizer/optimizer.py -h`
 
 It will run the generation of the GIF output with a limited country of 8 cities populated with 3 ants for nice GIF output.
 
