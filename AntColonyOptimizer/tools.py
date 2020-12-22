@@ -131,7 +131,7 @@ def parse_arguments() -> argparse.Namespace:
         "--iterrations",
         type=int,
         default=50,
-        help="Maximum number of iteration to find the optimum.")
+        help="Maximum number of iteration to find the optimum. Default 50.")
     general.add_argument(
         "-d",
         "--draw",
@@ -145,7 +145,7 @@ def parse_arguments() -> argparse.Namespace:
         type=float,
         default=0.4,
         help=
-        "How likely an ant will follow a path highly saturated with pheromones."
+        "How likely an ant will follow a path highly saturated with pheromones. Default 0.4."
     )
     colony.add_argument(
         "-b",
@@ -153,33 +153,37 @@ def parse_arguments() -> argparse.Namespace:
         type=float,
         default=0.6,
         help=
-        "How likely ants are going to be lazy and follow the shortest path.")
+        "How likely ants are going to be lazy and follow the shortest path. Default 0.6.")
     colony.add_argument(
         "-e",
         "--evaporation",
         type=float,
         default=0.3,
-        help="Pheromones are volatile component. It should decay over time.")
+        help=
+        "Pheromones are volatile component. It should decay over time. Default 0.3."
+    )
     colony.add_argument(
         "-r",
         "--random",
         type=float,
         default=0.3,
         help=
-        "Probability to pick a random newt direction (ignoring distance and pheromones)."
+        "Probability to pick a random newt direction (ignoring distance and pheromones). Default 0.3."
     )
-    colony.add_argument("-s",
-                        "--size",
-                        type=int,
-                        default=10,
-                        help="How many ants should be in the colony.")
+    colony.add_argument(
+        "-s",
+        "--size",
+        type=int,
+        default=10,
+        help="How many ants should be in the colony. Default 10.")
 
     country = parser.add_argument_group("Country to discover")
-    country.add_argument("-c",
-                         "--cities",
-                         type=int,
-                         default=10,
-                         help="Number of cities to create in the country.")
+    country.add_argument(
+        "-c",
+        "--cities",
+        type=int,
+        default=10,
+        help="Number of cities to create in the country. Default 10.")
     args = parser.parse_args()
 
     return args
